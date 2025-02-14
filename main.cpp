@@ -195,6 +195,8 @@ void onMIDI(double deltatime, std::vector<unsigned char> *message, void * /*user
     }
 }
 
+
+
 void refreshSequence()
 {
     for (int i = 0; i < MAX_STEPS; i++)
