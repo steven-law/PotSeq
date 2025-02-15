@@ -147,7 +147,7 @@ void onMIDI(double deltatime, std::vector<unsigned char> *message, void * /*user
         unsigned char stepToSet = midiCC - 100;
         // Set Note Values
 
-        if (midiCC >= 100 && midiCC < 112)
+        if (midiCC >= 100 && midiCC < 116)
         {
             sequenceBuffer[stepToSet] = limit(midiVAL, 0, 127);
             std::cout << "Set Note : " << sequenceBuffer[stepToSet] << " on Step: " << stepToSet << std::endl;
@@ -182,13 +182,13 @@ void onMIDI(double deltatime, std::vector<unsigned char> *message, void * /*user
         }
         if (midiCC == 25)
         {
-            volMin = limit(midiVAL, 0, 127);
+            volMin = limit(midiVAL, 0, volMax);
             std::cout << "Set volMin to: " << volMin << std::endl;
             return;
         }
         if (midiCC == 26)
         {
-            volMax = limit(midiVAL, 0, 127);
+            volMax = limit(midiVAL, volMin, 127);
             std::cout << "Set volMax to: " << volMax << std::endl;
             return;
         }
