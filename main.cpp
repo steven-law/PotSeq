@@ -116,7 +116,7 @@ void onMIDI(double deltatime, std::vector<unsigned char> *message, void * /*user
     if (statusByte == 0xF8) // system realtime message MIDI CLOCK
     {
 
-        tickCount = (tickCount + 1) % 96;
+        tickCount = (tickCount + 1);
         stepCount = (tickCount / clockDiv) % maxSteps;
         extClock = true;
         sequencer();
@@ -194,8 +194,6 @@ void onMIDI(double deltatime, std::vector<unsigned char> *message, void * /*user
         }
     }
 }
-
-
 
 void refreshSequence()
 {
