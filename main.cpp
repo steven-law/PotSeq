@@ -144,37 +144,127 @@ void onMIDI(double deltatime, std::vector<unsigned char> *message, void * /*user
         */
         unsigned char midiCC = (int)message->at(1);
         unsigned char midiVAL = (int)message->at(2);
-        unsigned char stepToSet = midiCC - 100;
+        unsigned char stepToSet = 16-midiCC;
         // Set Note Values
 
-        if (midiCC >= 100 && midiCC < 116)
+        if (midiCC ==13)
         {
-            sequenceBuffer[stepToSet] = limit(midiVAL, 0, 127);
-            std::cout << "Set Note : " << sequenceBuffer[stepToSet] << " on Step: " << stepToSet << std::endl;
+            sequenceBuffer[0] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[0] << " on Step: " << 0 << std::endl;
             return;
         }
-        if (midiCC == 116)
+        if (midiCC ==14)
+        {
+            sequenceBuffer[1] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[1] << " on Step: " << 1 << std::endl;
+            return;
+        }
+        if (midiCC ==15)
+        {
+            sequenceBuffer[2] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[2] << " on Step: " << 2 << std::endl;
+            return;
+        }
+        if (midiCC ==16)
+        {
+            sequenceBuffer[3] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[3] << " on Step: " << 3 << std::endl;
+            return;
+        }
+        if (midiCC ==9)
+        {
+            sequenceBuffer[4] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[4] << " on Step: " << 4 << std::endl;
+            return;
+        }
+        if (midiCC ==10)
+        {
+            sequenceBuffer[5] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[5] << " on Step: " << 5 << std::endl;
+            return;
+        }
+        if (midiCC ==11)
+        {
+            sequenceBuffer[6] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[6] << " on Step: " << 6 << std::endl;
+            return;
+        }
+        if (midiCC ==12)
+        {
+            sequenceBuffer[7] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[7] << " on Step: " << 7 << std::endl;
+            return;
+        }
+        if (midiCC ==5)
+        {
+            sequenceBuffer[8] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[8] << " on Step: " << 8 << std::endl;
+            return;
+        }
+        if (midiCC ==6)
+        {
+            sequenceBuffer[9] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[9] << " on Step: " << 9 << std::endl;
+            return;
+        }
+        if (midiCC ==7)
+        {
+            sequenceBuffer[10] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[10] << " on Step: " << 10 << std::endl;
+            return;
+        }
+        if (midiCC ==8)
+        {
+            sequenceBuffer[11] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[11] << " on Step: " << 11 << std::endl;
+            return;
+        }
+        if (midiCC ==1)
+        {
+            sequenceBuffer[12] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[12] << " on Step: " << 12 << std::endl;
+            return;
+        }
+        if (midiCC ==2)
+        {
+            sequenceBuffer[13] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[13] << " on Step: " << 13 << std::endl;
+            return;
+        }
+        if (midiCC ==3)
+        {
+            sequenceBuffer[14] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[14] << " on Step: " << 14 << std::endl;
+            return;
+        }
+        if (midiCC ==4)
+        {
+            sequenceBuffer[15] = limit(midiVAL, 0, 127);
+            std::cout << "Set Note : " << sequenceBuffer[15] << " on Step: " << 15 << std::endl;
+            return;
+        }
+        if (midiCC == 29)
         {
             clockDiv = limit(midiVAL, 1, 95);
             std::cout << "Set clock Division to: " << clockDiv << std::endl;
 
             return;
         }
-        if (midiCC == 117)
+        if (midiCC == 30)
         {
             gateLength = limit(midiVAL, 1, (96 / maxSteps) - 1);
             std::cout << "Set clock Division to: " << gateLength << std::endl;
 
             return;
         }
-        if (midiCC == 118)
+        if (midiCC == 31)
         {
             maxSteps = limit(midiVAL, 1, 16);
             std::cout << "Set max Steps to: " << maxSteps << std::endl;
 
             return;
         }
-        if (midiCC == 119)
+        if (midiCC == 32)
         {
             midiChannelOut = limit(midiVAL, 0, 15);
             std::cout << "Set midiChannelOut to: " << midiChannelOut << std::endl;
